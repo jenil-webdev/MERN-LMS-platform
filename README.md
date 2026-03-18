@@ -1,5 +1,6 @@
-# React + Vite
-
+# LMS Project using MERN Stack
+# React + Vite + Node + Mongodb + Express
+ 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
