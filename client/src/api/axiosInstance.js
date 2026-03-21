@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://lms-backend-efcf.onrender.com",
+  withCredentials: true, // agar cookies/auth use ho raha hai
+  // "http://localhost:5000",
 });
 
 axiosInstance.interceptors.request.use(
