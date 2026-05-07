@@ -32,7 +32,8 @@ function AuthPage() {
     return (
       signInFormData &&
       signInFormData.userEmail !== "" &&
-      signInFormData.password !== ""
+      signInFormData.password !== "" &&
+      signInFormData.password.length >= 8
     );
   }
 
@@ -40,12 +41,13 @@ function AuthPage() {
     return (
       signUpFormData &&
       signUpFormData.userName !== "" &&
+      signUpFormData.userName.length >= 3 &&
       signUpFormData.userEmail !== "" &&
-      signUpFormData.password !== ""
+      signUpFormData.userEmail.includes("@") &&
+      signUpFormData.password !== "" &&
+      signUpFormData.password.length >= 8
     );
   }
-
-  console.log(signInFormData);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -53,7 +55,6 @@ function AuthPage() {
         <Link to={"/"} className="flex items-center justify-center">
           <GraduationCap className="h-8 w-8 mr-4" />
           <span className="font-extrabold text-2xl">SkillForge</span>
-          {/* LMS LEARN */}
         </Link>
       </header>
       <div className="flex items-center justify-center min-h-screen bg-background">
@@ -61,7 +62,7 @@ function AuthPage() {
           value={activeTab}
           defaultValue="signin"
           onValueChange={handleTabChange}
-          className="w-full max-w-md"
+          className="w-full max-w-md px-5"
         >
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="signin">Sign In</TabsTrigger>
@@ -76,6 +77,12 @@ function AuthPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
+                {signInFormData.password !== "" &&
+                  signInFormData.password.length < 8 && (
+                    <p className="text-sm text-red-500">
+                      Password must be at least 8 characters.
+                    </p>
+                  )}
                 <CommonForm
                   formControls={signInFormControls}
                   buttonText={"Sign In"}
@@ -96,6 +103,18 @@ function AuthPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
+                {signUpFormData.userName !== "" &&
+                  signUpFormData.userName.length < 3 && (
+                    <p className="text-sm text-red-500">
+                      Username must be at least 3 characters.
+                    </p>
+                  )}
+                {signUpFormData.password !== "" &&
+                  signUpFormData.password.length < 8 && (
+                    <p className="text-sm text-red-500">
+                      Password must be at least 8 characters.
+                    </p>
+                  )}
                 <CommonForm
                   formControls={signUpFormControls}
                   buttonText={"Sign Up"}

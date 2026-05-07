@@ -227,13 +227,13 @@ function CourseCurriculum() {
         ) : null}
         <div className="mt-4 space-y-4">
           {courseCurriculumFormData.map((curriculumItem, index) => (
-            <div className="border p-5 rounded-md">
-              <div className="flex gap-5 items-center">
+            <div className="border p-3 rounded-md">
+              <div className="flex flex-col md:flex-row gap-3 md:gap-5 md:items-center">
                 <h3 className="font-semibold">Lecture {index + 1}</h3>
                 <Input
                   name={`title-${index + 1}`}
                   placeholder="Enter lecture title"
-                  className="max-w-96"
+                  className="w-full md:max-w-96"
                   onChange={(event) => handleCourseTitleChange(event, index)}
                   value={courseCurriculumFormData[index]?.title}
                 />

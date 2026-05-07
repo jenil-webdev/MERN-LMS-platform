@@ -1,3 +1,4 @@
+import { toast } from "@/hooks/use-toast";
 import { Skeleton } from "@/components/ui/skeleton";
 import { initialSignInFormData, initialSignUpFormData } from "@/config";
 import { checkAuthService, loginService, registerService } from "@/services";
@@ -17,12 +18,23 @@ export default function AuthProvider({ children }) {
   async function handleRegisterUser(event) {
     event.preventDefault();
     const data = await registerService(signUpFormData);
+    if (data.success) {
+      toast({
+        title: "Account created!",
+        description: "Please sign in to continue.",
+      });
+    } else {
+      toast({
+        title: "Registration failed",
+        description: data.message || "Something went wrong.",
+        variant: "destructive",
+      });
+    }
   }
 
   async function handleLoginUser(event) {
     event.preventDefault();
     const data = await loginService(signInFormData);
-    console.log(data, "datadatadatadatadata");
 
     if (data.success) {
       sessionStorage.setItem(
@@ -33,15 +45,22 @@ export default function AuthProvider({ children }) {
         authenticate: true,
         user: data.data.user,
       });
+      toast({
+        title: "Welcome back!",
+        description: "Logged in successfully.",
+      });
     } else {
       setAuth({
         authenticate: false,
         user: null,
       });
+      toast({
+        title: "Login failed",
+        description: data.message || "Invalid email or password.",
+        variant: "destructive",
+      });
     }
   }
-
-  //check auth user
 
   async function checkAuthUser() {
     try {
@@ -60,7 +79,6 @@ export default function AuthProvider({ children }) {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
       if (!error?.response?.data?.success) {
         setAuth({
           authenticate: false,
@@ -81,8 +99,6 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     checkAuthUser();
   }, []);
-
-  console.log(auth, "gf");
 
   return (
     <AuthContext.Provider
