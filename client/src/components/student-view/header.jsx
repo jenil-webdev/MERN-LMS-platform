@@ -57,7 +57,7 @@ function StudentViewCommonHeader() {
         <div className="hidden md:flex items-center space-x-4">
           <div
             onClick={() => navigate("/student-courses")}
-            className="flex cursor-pointer items-center gap-2"
+            className="flex cursor-pointer items-center gap-2 rounded-md hover:bg-gray-100 transition-colors px-3 py-1"
           >
             <span className="font-extrabold text-xl">My Courses</span>
             <TvMinimalPlay className="w-6 h-6" />
