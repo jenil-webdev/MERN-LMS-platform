@@ -186,7 +186,7 @@ function AddNewCoursePage() {
         <div className="container mx-auto p-5">
           <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-1 p-1 rounded-md hover:bg-gray-100"
+          className="flex items-center gap-1 p-1 rounded-md hover:bg-gray-100 hover:text-gray-500 transition text-black"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-sm font-medium">Go Back</span>

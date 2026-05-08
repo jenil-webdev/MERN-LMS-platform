@@ -133,23 +133,26 @@ function StudentViewCourseDetailsPage() {
   const getIndexOfFreePreviewUrl =
     studentViewCourseDetails !== null
       ? studentViewCourseDetails?.curriculum?.findIndex(
-          (item) => item.freePreview
-        )
+        (item) => item.freePreview
+      )
       : -1;
 
   return (
     <div className=" mx-auto p-4">
-      <div className="bg-gray-900 text-white p-8 rounded-t-lg">
+      <div className="bg-gray-900 text-white p-8 rounded-xl">
         <h1 className="text-3xl font-bold mb-4">
           {studentViewCourseDetails?.title}
         </h1>
         <p className="text-xl mb-4">{studentViewCourseDetails?.subtitle}</p>
-        <div className="flex items-center space-x-4 mt-2 text-sm">
-          <span>Created By {studentViewCourseDetails?.instructorName}</span>
-          <span>Created On {studentViewCourseDetails?.date.split("T")[0]}</span>
+        <div className="grid grid-cols-2 md:flex md:items-center md:space-x-4 gap-2 mt-2 text-sm">
+          <span>Created By: {studentViewCourseDetails?.instructorName}</span>
+          <span>Created On: {studentViewCourseDetails?.date.split("T")[0]}</span>
           <span className="flex items-center">
             <Globe className="mr-1 h-4 w-4" />
-            {studentViewCourseDetails?.primaryLanguage}
+            {studentViewCourseDetails?.primaryLanguage
+              ? studentViewCourseDetails.primaryLanguage.charAt(0).toUpperCase() +
+              studentViewCourseDetails.primaryLanguage.slice(1)
+              : ""}
           </span>
           <span>
             {studentViewCourseDetails?.students.length}{" "}
@@ -192,11 +195,10 @@ function StudentViewCourseDetailsPage() {
               {studentViewCourseDetails?.curriculum?.map(
                 (curriculumItem, index) => (
                   <li
-                    className={`${
-                      curriculumItem?.freePreview
+                    className={`${curriculumItem?.freePreview
                         ? "cursor-pointer"
                         : "cursor-not-allowed"
-                    } flex items-center mb-4`}
+                      } flex items-center mb-4`}
                     onClick={
                       curriculumItem?.freePreview
                         ? () => handleSetFreePreview(curriculumItem)
@@ -223,8 +225,8 @@ function StudentViewCourseDetailsPage() {
                   url={
                     getIndexOfFreePreviewUrl !== -1
                       ? studentViewCourseDetails?.curriculum[
-                          getIndexOfFreePreviewUrl
-                        ].videoUrl
+                        getIndexOfFreePreviewUrl
+                      ].videoUrl
                       : ""
                   }
                   width="450px"
