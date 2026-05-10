@@ -128,9 +128,9 @@ function StudentViewCourseProgressPage() {
             onClick={() => navigate("/student-courses")}
             className="text-white"
             variant="ghost"
-            size="sm"
+            size="base"
           >
-            <ChevronLeft className="h-4 w-4 mr-2 hover:bg-white hover:text-black" />
+            <ChevronLeft className="h-5 w-5 mr-2 hover:bg-white hover:text-black" />
             Back to My Courses Page
           </Button>
           <h1 className="text-lg font-bold hidden md:block">
@@ -163,12 +163,12 @@ function StudentViewCourseProgressPage() {
           </div>
         </div>
         <div
-          className={`fixed top-[64px] right-0 bottom-0 w-[400px] bg-[#1c1d1f] border-l border-gray-700 transition-all duration-300 ${
+          className={`fixed top-[64px] right-0 bottom-0 w-[280px] sm:w-[350px] md:w-[400px] bg-[#1c1d1f] border-l border-gray-700 transition-all duration-300 ${
             isSideBarOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <Tabs defaultValue="content" className="h-full flex flex-col">
-            <TabsList className="grid bg-[#1c1d1f] w-full grid-cols-2 p-0 h-14">
+            <TabsList className="grid bg-[#1c1d1f] w-full grid-cols-2 p-0 h-14 border-b">
               <TabsTrigger
                 value="content"
                 className=" text-white rounded-none h-full"

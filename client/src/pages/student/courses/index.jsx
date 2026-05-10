@@ -169,7 +169,7 @@ function StudentViewCoursesPage() {
                   <span className="text-[16px] font-medium">Sort By</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[180px]">
+              <DropdownMenuContent align="start" className="w-[180px]">
                 <DropdownMenuRadioGroup
                   value={sort}
                   onValueChange={(value) => setSort(value)}
@@ -198,32 +198,25 @@ function StudentViewCoursesPage() {
                   key={courseItem?._id}
                 >
                   <CardContent className="flex gap-4 p-4">
-                    <div className="w-48 h-32 flex-shrink-0">
+                    <div className="w-32 h-24 flex-shrink-0">
                       <img
                         src={courseItem?.image}
-                        className="w-ful h-full object-cover"
+                        className="w-full h-full object-cover rounded"
                       />
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-xl mb-2">
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-xl mb-2 line-clamp-2">
                         {courseItem?.title}
                       </CardTitle>
-                      <p className="text-sm text-gray-600 mb-1">
+                      <p className="text-sm text-gray-600 mb-1 truncate">
                         Created By{" "}
-                        <span className="font-bold">
-                          {courseItem?.instructorName}
-                        </span>
+                        <span className="font-bold">{courseItem?.instructorName}</span>
                       </p>
                       <p className="text-[16px] text-gray-600 mt-3 mb-2">
-                        {`${courseItem?.curriculum?.length} ${
-                          courseItem?.curriculum?.length <= 1
-                            ? "Lecture"
-                            : "Lectures"
-                        } - ${courseItem?.level.toUpperCase()} Level`}
+                        {`${courseItem?.curriculum?.length} ${courseItem?.curriculum?.length <= 1 ? "Lecture" : "Lectures"
+                          } - ${courseItem?.level.toUpperCase()} Level`}
                       </p>
-                      <p className="font-bold text-lg">
-                        ${courseItem?.pricing}
-                      </p>
+                      <p className="font-bold text-lg">${courseItem?.pricing}</p>
                     </div>
                   </CardContent>
                 </Card>

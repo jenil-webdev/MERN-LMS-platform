@@ -195,7 +195,7 @@ function AddNewCoursePage() {
             <h1 className="text-3xl font-extrabold">Create a new course</h1>
             <Button
               disabled={!validateFormData()}
-              className="text-sm tracking-wider font-bold px-8"
+              className="text-sm tracking-wider font-bold px-7"
               onClick={handleCreateCourse}
             >
               SUBMIT
@@ -204,13 +204,13 @@ function AddNewCoursePage() {
           <Card>
             <CardContent>
               <div className="container mx-auto">
-                <Tabs defaultValue="curriculum" className="space-y-4 pt-3">
-                  <TabsList className="w-full justify-start border overflow-x-auto overflow-y-hidden">
-                    <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                    <TabsTrigger value="course-landing-page">
+                <Tabs defaultValue="curriculum" className="space-y-4 pt-4">
+                  <TabsList className="w-full justify-start border overflow-x-auto overflow-y-hidden h-12">
+                    <TabsTrigger value="curriculum" className="text-base px-6 py-1">Curriculum</TabsTrigger>
+                    <TabsTrigger value="course-landing-page" className="text-base px-6 py-1">
                       Course Landing Page
                     </TabsTrigger>
-                    <TabsTrigger value="settings">Settings</TabsTrigger>
+                    <TabsTrigger value="settings" className="text-base px-6 py-1">Settings</TabsTrigger>
                   </TabsList>
                   <TabsContent value="curriculum">
                     <CourseCurriculum />

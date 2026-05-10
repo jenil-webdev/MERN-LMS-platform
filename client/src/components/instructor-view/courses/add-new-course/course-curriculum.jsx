@@ -188,8 +188,8 @@ function CourseCurriculum() {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row justify-between">
-        <CardTitle>Create Course Curriculum</CardTitle>
+      <CardHeader className="flex flex-col gap-3 sm:flex-row items-start sm:items-center justify-between">
+        <CardTitle className="text-xl font-semibold">Create Course Curriculum</CardTitle>
         <div>
           <Input
             type="file"
@@ -204,7 +204,7 @@ function CourseCurriculum() {
             as="label"
             htmlFor="bulk-media-upload"
             variant="outline"
-            className="cursor-pointer"
+            className="cursor-pointer w-full sm:w-auto flex items-center justify-center"
             onClick={handleOpenBulkUploadDialog}
           >
             <Upload className="w-4 h-5 mr-2" />

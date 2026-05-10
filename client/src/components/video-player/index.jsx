@@ -127,7 +127,7 @@ function VideoPlayer({
   return (
     <div
       ref={playerContainerRef}
-      className={`relative bg-gray-900 rounded-lg overflow-hidden shadow-2xl transition-all duration-300 ease-in-out 
+      className={`relative bg-gray-800 rounded-lg overflow-hidden shadow-2xl transition-all duration-300 ease-in-out 
       ${isFullScreen ? "w-screen h-screen" : ""}
       `}
       style={{ width, height }}
@@ -147,9 +147,8 @@ function VideoPlayer({
       />
       {showControls && (
         <div
-          className={`absolute bottom-0 left-0 right-0 bg-gray-800 bg-opacity-75 p-4 transition-opacity duration-300 ${
-            showControls ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute bottom-0 left-0 right-0 bg-gray-800 bg-opacity-75 p-4 transition-opacity duration-300 ${showControls ? "opacity-100" : "opacity-0"
+            }`}
         >
           <Slider
             value={[played * 100]}
@@ -206,7 +205,8 @@ function VideoPlayer({
                 max={100}
                 step={1}
                 onValueChange={(value) => handleVolumeChange([value[0] / 100])}
-                className="w-24 "
+                className="w-24"
+                variant="white"
               />
             </div>
             <div className="flex items-center space-x-2">

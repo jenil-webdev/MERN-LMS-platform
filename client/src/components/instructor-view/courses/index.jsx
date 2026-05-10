@@ -27,7 +27,7 @@ function InstructorCourses({ listOfCourses }) {
 
   return (
     <Card>
-      <CardHeader className="flex justify-between flex-row items-center">
+      <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center justify-between">
         <CardTitle className="text-3xl font-extrabold">All Courses</CardTitle>
         <Button
           onClick={() => {
@@ -36,7 +36,7 @@ function InstructorCourses({ listOfCourses }) {
             setCourseCurriculumFormData(courseCurriculumInitialFormData);
             navigate("/instructor/create-new-course");
           }}
-          className="p-6"
+          className="p-6 w-full sm:w-auto"
         >
           Create New Course
         </Button>
@@ -55,30 +55,30 @@ function InstructorCourses({ listOfCourses }) {
             <TableBody>
               {listOfCourses && listOfCourses.length > 0
                 ? listOfCourses.map((course) => (
-                    <TableRow>
-                      <TableCell className="font-medium">
-                        {course?.title}
-                      </TableCell>
-                      <TableCell>{course?.students?.length}</TableCell>
-                      <TableCell>
-                        ${course?.students?.length * course?.pricing}
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <Button
-                          onClick={() => {
-                            navigate(`/instructor/edit-course/${course?._id}`);
-                          }}
-                          variant="ghost"
-                          size="sm"
-                        >
-                          <Edit className="h-6 w-6" />
-                        </Button>
-                        <Button variant="ghost" size="sm">
-                          <Delete className="h-6 w-6" />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))
+                  <TableRow>
+                    <TableCell className="font-medium">
+                      {course?.title}
+                    </TableCell>
+                    <TableCell>{course?.students?.length}</TableCell>
+                    <TableCell>
+                      ${course?.students?.length * course?.pricing}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <Button
+                        onClick={() => {
+                          navigate(`/instructor/edit-course/${course?._id}`);
+                        }}
+                        variant="ghost"
+                        size="sm"
+                      >
+                        <Edit className="h-6 w-6" />
+                      </Button>
+                      <Button variant="ghost" size="sm">
+                        <Delete className="h-6 w-6" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))
                 : null}
             </TableBody>
           </Table>
