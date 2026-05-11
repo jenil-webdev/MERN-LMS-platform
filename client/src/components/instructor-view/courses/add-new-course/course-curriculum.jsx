@@ -252,12 +252,14 @@ function CourseCurriculum() {
               </div>
               <div className="mt-6">
                 {courseCurriculumFormData[index]?.videoUrl ? (
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3 items-start">
+                    <div className="w-full sm:max-w-[450px]">
                     <VideoPlayer
                       url={courseCurriculumFormData[index]?.videoUrl}
                       width="450px"
                       height="200px"
                     />
+                    </div>
                     <Button onClick={() => handleReplaceVideo(index)}>
                       Replace Video
                     </Button>
