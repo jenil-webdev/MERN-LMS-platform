@@ -27,11 +27,19 @@ const authLimiter = rateLimit({
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
-    methods: ["GET", "POST", "DELETE", "PUT"],
+    origin: [
+      "https://lms-client-vert.vercel.app",
+      "https://mern-lms-platform-tau.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:3000",
+    ],
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
+
+app.options("*", cors());
 
 app.use(express.json());
 
