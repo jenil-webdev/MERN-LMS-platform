@@ -126,7 +126,7 @@ function StudentViewCourseProgressPage() {
         <div className="flex items-center space-x-4">
           <Button
             onClick={() => navigate("/student-courses")}
-            className="text-white"
+            className="text-white p-1"
             variant="ghost"
             size="base"
           >
@@ -171,13 +171,13 @@ function StudentViewCourseProgressPage() {
             <TabsList className="grid bg-[#1c1d1f] w-full grid-cols-2 p-0 h-14 border-b">
               <TabsTrigger
                 value="content"
-                className=" text-white rounded-none h-full"
+                className=" text-white rounded-lg h-full"
               >
                 Course Content
               </TabsTrigger>
               <TabsTrigger
                 value="overview"
-                className=" text-white rounded-none h-full"
+                className=" text-white rounded-lg h-full"
               >
                 Overview
               </TabsTrigger>
