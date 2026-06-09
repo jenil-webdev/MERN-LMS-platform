@@ -13,12 +13,17 @@ import StudentViewCourseDetailsPage from "./pages/student/course-details";
 import PaypalPaymentReturnPage from "./pages/student/payment-return";
 import StudentCoursesPage from "./pages/student/student-courses";
 import StudentViewCourseProgressPage from "./pages/student/course-progress";
+import Home from "./pages/Home";
 
 function App() {
   const { auth } = useContext(AuthContext);
 
   return (
     <Routes>
+
+      <Route path="/" element={<Home />} />
+
+      {/* Auth */}
       <Route
         path="/auth"
         element={
@@ -29,6 +34,8 @@ function App() {
           />
         }
       />
+
+      {/* Instructor Routes */}
       <Route
         path="/instructor"
         element={
@@ -59,8 +66,10 @@ function App() {
           />
         }
       />
+
+      {/* Student Routes */}
       <Route
-        path="/"
+        path="/student"
         element={
           <RouteGuard
             element={<StudentViewCommonLayout />}
@@ -72,17 +81,12 @@ function App() {
         <Route path="" element={<StudentHomePage />} />
         <Route path="home" element={<StudentHomePage />} />
         <Route path="courses" element={<StudentViewCoursesPage />} />
-        <Route
-          path="course/details/:id"
-          element={<StudentViewCourseDetailsPage />}
-        />
+        <Route path="course/details/:id" element={<StudentViewCourseDetailsPage />} />
         <Route path="payment-return" element={<PaypalPaymentReturnPage />} />
         <Route path="student-courses" element={<StudentCoursesPage />} />
-        <Route
-          path="course-progress/:id"
-          element={<StudentViewCourseProgressPage />}
-        />
+        <Route path="course-progress/:id" element={<StudentViewCourseProgressPage />} />
       </Route>
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
