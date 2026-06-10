@@ -9,8 +9,16 @@ function CommonForm({
   setFormData,
   isButtonDisabled = false,
 }) {
+
+  // Add this function
+  function handleKeyDown(e) {
+    if (e.key === "Enter" && !isButtonDisabled) {
+      handleSubmit(e);
+    }
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
       {/* render form controls here */}
       <FormControls
         formControls={formControls}
